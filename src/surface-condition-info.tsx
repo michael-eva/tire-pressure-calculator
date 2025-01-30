@@ -3,12 +3,12 @@ import BackBtn from './components/back-btn';
 
 const surfaceConditions = [
     {
-        id: 'concrete-velodrome',
+        id: 'indoor-velodrome',
         name: 'Track (Indoor Wood)',
         description: 'Smooth, consistent wooden surface typically found in indoor velodromes'
     },
     {
-        id: 'indoor-velodrome',
+        id: 'concrete-velodrome',
         name: 'Track (Outdoor Concrete)',
         description: 'Smooth concrete surface commonly used in outdoor velodromes'
     },
