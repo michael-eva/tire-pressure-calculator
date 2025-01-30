@@ -16,22 +16,13 @@ const MeasuredWidthInfo = () => {
                     <section>
                         <h2 className="text-xl font-bold mb-4">What it is and why it matters:</h2>
                         <p className="text-gray-800 mb-4">
-                            Measured width does not equate to the number printed on the sidewall; rather, it refers to the width
-                            of the tire when it is fully installed and inflated on the rim. Even dealing with this stuff every day, it can be
-                            hard keeping it straight as we continue to call the tires by their casing numbers. That said, we have seen
-                            23mm GP4000SII on a 21.5mm inner bead measure at 28.9mm wide, so would be 29mm in this calculator.
+                            Tire width refers to the actual width of the tire when fully installed and inflated on the rim, rather than the number printed on the sidewall. This distinction can be difficult to track, even for those working with tires on a daily basis, as the casing number is commonly used in reference. For example, a 23mm Continental GP4000SII mounted on a 21.5mm inner bead has been measured at 28.9mm wide, which would correspond to 29mm in this calculator.
                         </p>
                         <p className="text-gray-800 mb-4">
-                            Opposite of that, many of the gravel and mtn tires measure at or below the casing number which
-                            seems to be a combination of assuming wide bead seat rims and/or measuring to tread and not casing, for
-                            example WTB Riddler 29x2.25 (57mm) actually measure 51mm at the casing (56-57mm at the tread) on the
-                            ENVE G23 rim... so the measured casing number is critical.
+                            Conversely, many gravel and mountain bike tires measure at or below the casing number. This discrepancy may be due to factors such as the assumption of wide bead seat rims or the practice of measuring to the tread rather than the casing. For instance, the WTB Riddler 29x2.25 (57mm) actually measures 51mm at the casing (56-57mm at the tread) when mounted on the ENVE G23 rim. Therefore, accurate casing measurements are crucial for determining the correct tire width.
                         </p>
                         <p className="text-gray-800">
-                            Measured width drives the volume of air in the tire as well as the size of your contact patch with the
-                            ground. For this reason, it is critical to get an accurate width measurement before you attempt to optimize
-                            your pressure. The penalty of getting these things wrong is 3-5x more than you would save by dropping
-                            hundreds of dollars on ceramic bearings or the like!
+                            Measured width directly influences both the tire's air volume and the size of the contact patch with the ground. As such, obtaining an accurate width measurement is essential before attempting to optimize tire pressure. The potential consequences of incorrect measurements are far more significant than the benefits gained from investing in high-end components like ceramic bearings.
                         </p>
                     </section>
 

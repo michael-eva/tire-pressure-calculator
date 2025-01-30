@@ -15,11 +15,7 @@ const TireTypeInfo = () => {
                 <CardContent className="p-6 space-y-6">
                     <section>
                         <p className="text-gray-800">
-                            Most of our previous data has been tested with World Tour riders who are using some of the fastest
-                            tires available. Tires with extremely supple casing are significantly more efficient at absorbing
-                            road vibrations so they are able to run higher pressures more efficiently. The lower quality casing,
-                            the lower the breakpoint pressure will be. The optimal pressure can be as much as 20% lower on a
-                            low quality casing vs the highest quality available.
+                            World Tour riders often use some of the fastest tires available, which feature highly supple casings that effectively absorb road vibrations. This allows them to maintain higher pressures with greater efficiency. In contrast, tires with lower-quality casings have a lower breakpoint pressure, meaning their optimal pressure can be up to 20% lower compared to those with the highest-quality casings.
                         </p>
                     </section>
                 </CardContent>
