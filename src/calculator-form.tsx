@@ -203,7 +203,7 @@ const CalculatorForm = () => {
                                     }}
                                     render={({ field }) => (
                                         <FormItem className="space-y-1">
-                                            <FormLabel className="text-sm font-semibold">Total System Weight</FormLabel>
+                                            <FormLabel className="text-sm font-semibold">Total System Weight (bike + rider + gear)</FormLabel>
                                             <div className="flex gap-2">
                                                 <Select
                                                     onValueChange={(value) => form.setValue('weightUnit', value as 'lbs' | 'kg')}
