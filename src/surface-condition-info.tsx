@@ -75,7 +75,7 @@ const SurfaceConditionInfo = () => {
                                         {condition.images.map((imageId) => (
                                             <img
                                                 key={imageId}
-                                                src={`/src/assets/surface-condition/${imageId}.jpg`}
+                                                src={`/assets/surface-condition/${imageId}.jpg`}
                                                 alt={`${condition.name}`}
                                                 className="w-full h-32 object-cover rounded-lg"
                                             />
@@ -83,7 +83,7 @@ const SurfaceConditionInfo = () => {
                                     </div>
                                 ) : (
                                     <img
-                                        src={`/src/assets/surface-condition/${condition.id}.jpg`}
+                                        src={`/assets/surface-condition/${condition.id}.jpg`}
                                         alt={condition.name}
                                         className="w-full h-48 object-cover rounded-lg"
                                     />

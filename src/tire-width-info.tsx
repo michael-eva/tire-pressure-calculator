@@ -46,7 +46,7 @@ const MeasuredWidthInfo = () => {
                                     and pressure errors with your tire choice.
                                 </p>
                                 <img
-                                    src="src/assets/caliper-measurement.png"
+                                    src="/assets/caliper-measurement.png"
                                     alt="Caliper measurement demonstration"
                                     className="w-full  object-cover rounded"
                                 />
@@ -62,12 +62,12 @@ const MeasuredWidthInfo = () => {
                         </p>
                         <div className="grid grid-cols-2 gap-4">
                             <img
-                                src="src/assets/diy-wire.png"
+                                src="/assets/diy-wire.png"
                                 alt="Paperclip measurement step 1"
                                 className="w-full h-48 object-cover rounded"
                             />
                             <img
-                                src="src/assets/diy-ruler.png"
+                                src="/assets/diy-ruler.png"
                                 alt="Paperclip measurement step 2"
                                 className="w-full h-48 object-cover rounded"
                             />
