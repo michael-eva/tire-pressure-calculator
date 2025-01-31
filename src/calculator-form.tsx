@@ -189,6 +189,9 @@ const CalculatorForm = () => {
                         <Bike className="w-8 h-8 text-purple-600" />
                     </div>
                     <p className="text-sm text-gray-600">Calculate optimal tire pressure for your bicycle</p>
+                    <p className="text-sm text-gray-600 mt-2">
+                        This calculator helps you determine the optimal tire pressure for your bicycle based on various factors such as weight, surface condition, tire dimensions and speed.
+                    </p>
                 </CardHeader>
                 <CardContent className="px-0 md:px-6">
                     <Form {...form}>

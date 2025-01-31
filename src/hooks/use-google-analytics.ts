@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 function useGoogleAnalytics() {
   useEffect(() => {
-    // if (process.env.NODE_ENV === "production") {
     const script = document.createElement("script");
     script.src = "https://www.googletagmanager.com/gtag/js?id=G-5EKY1EDJ14";
     script.async = true;
@@ -16,7 +15,6 @@ function useGoogleAnalytics() {
 
     gtag("js", new Date());
     gtag("config", "G-5EKY1EDJ14");
-    // }
   }, []);
 }
 
