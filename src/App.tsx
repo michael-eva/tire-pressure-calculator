@@ -3,10 +3,10 @@ import CalculatorForm from './calculator-form';
 import MeasuredWidthInfo from './tire-width-info';
 import TireTypeInfo from './tire-type-info';
 import SurfaceConditionInfo from './surface-condition-info';
-import useGoogleAnalytics from './hooks/use-google-analytics';
+// import useGoogleAnalytics from './hooks/use-google-analytics';
 
 function App() {
-  useGoogleAnalytics();
+  // useGoogleAnalytics();
 
   return (
     <Router>
