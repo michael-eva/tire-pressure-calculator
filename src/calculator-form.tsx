@@ -1,12 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Bike } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Slider } from "@/components/ui/slider";
 
 type FormData = {
     weight: string;
@@ -31,7 +30,31 @@ type CalculationResult = {
 };
 
 const CalculatorForm = () => {
+    const defaultValues: FormData = {
+        weight: '200',
+        weightUnit: 'lbs',
+        surfaceCondition: 'worn-pavement',
+        tireWidth: '23',
+        tireDiameter: '622',
+        tireType: 'mid-range-tubeless-latex',
+        speed: '14',
+        weightDist: 'road'
+    };
+
+    const form = useForm<FormData>({
+        defaultValues
+    });
+
     const [result, setResult] = useState<CalculationResult | null>(null);
+
+    // Watch all form values for changes
+    const formValues = form.watch();
+
+    // Calculate results on initial render and when form values change
+    useEffect(() => {
+        const results = calculatePressures(formValues);
+        setResult(results);
+    }, [formValues]);
 
     const validateWeight = (value: string) => {
         const weightInKg = form.getValues('weightUnit') === 'lbs'
@@ -40,18 +63,6 @@ const CalculatorForm = () => {
 
         return (weightInKg >= 34 && weightInKg <= 205) || 'Weight must be between 75-450 lbs or 34-205 kg';
     };
-
-    const form = useForm<FormData>({
-        defaultValues: {
-            weightUnit: 'lbs',
-            surfaceCondition: 'null',
-            tireWidth: 'null',
-            tireDiameter: 'null',
-            tireType: 'null',
-            speed: 'null',
-            weightDist: 'null'
-        }
-    });
 
     const calculateK1 = (surfaceCondition: string): number => {
         const surfaceK1Map = {
@@ -162,12 +173,6 @@ const CalculatorForm = () => {
         };
     };
 
-    const onSubmit = (data: FormData) => {
-        const results = calculatePressures(data);
-        setResult(results);
-    };
-    console.log("results", result);
-
     return (
         <div className="relative">
             {/* Decorative bike elements */}
@@ -195,7 +200,7 @@ const CalculatorForm = () => {
                 </CardHeader>
                 <CardContent className="px-0 md:px-6">
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+                        <div className="space-y-8">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <FormField
                                     control={form.control}
@@ -207,21 +212,34 @@ const CalculatorForm = () => {
                                     render={({ field }) => (
                                         <FormItem className="space-y-1">
                                             <FormLabel className="text-sm font-semibold">Total System Weight (bike + rider + gear)</FormLabel>
-                                            <div className="flex gap-2">
-                                                <Select
-                                                    onValueChange={(value) => form.setValue('weightUnit', value as 'lbs' | 'kg')}
-                                                    defaultValue={form.getValues('weightUnit')}
-                                                >
-                                                    <SelectTrigger className="w-[90px]">
-                                                        <SelectValue placeholder="Unit" />
-                                                    </SelectTrigger>
-                                                    <SelectContent>
-                                                        <SelectItem value="lbs">lbs</SelectItem>
-                                                        <SelectItem value="kg">kg</SelectItem>
-                                                    </SelectContent>
-                                                </Select>
+                                            <div className="space-y-4">
+                                                <div className="flex items-center gap-2">
+                                                    <Select
+                                                        onValueChange={(value) => form.setValue('weightUnit', value as 'lbs' | 'kg')}
+                                                        defaultValue={form.getValues('weightUnit')}
+                                                    >
+                                                        <SelectTrigger className="w-[90px]">
+                                                            <SelectValue placeholder="Unit" />
+                                                        </SelectTrigger>
+                                                        <SelectContent>
+                                                            <SelectItem value="lbs">lbs</SelectItem>
+                                                            <SelectItem value="kg">kg</SelectItem>
+                                                        </SelectContent>
+                                                    </Select>
+                                                    <span className="min-w-[4rem] text-sm font-medium">
+                                                        {field.value} {form.getValues('weightUnit')}
+                                                    </span>
+                                                </div>
                                                 <FormControl>
-                                                    <Input type="number" {...field} className="flex-1" />
+                                                    <Slider
+                                                        defaultValue={[Number(field.value)]}
+                                                        min={form.getValues('weightUnit') === 'lbs' ? 75 : 34}
+                                                        max={form.getValues('weightUnit') === 'lbs' ? 450 : 205}
+                                                        step={1}
+                                                        onValueChange={(values: number[]) => {
+                                                            field.onChange(values[0].toString());
+                                                        }}
+                                                    />
                                                 </FormControl>
                                             </div>
                                             <FormMessage className="text-xs" />
@@ -416,14 +434,7 @@ const CalculatorForm = () => {
                                     )}
                                 />
                             </div>
-
-                            <Button
-                                type="submit"
-                                className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200"
-                            >
-                                Calculate Pressure
-                            </Button>
-                        </form>
+                        </div>
                     </Form>
 
                     {result && (
